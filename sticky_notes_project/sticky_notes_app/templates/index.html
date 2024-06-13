@@ -1,0 +1,31 @@
+<!-- templates/base.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Bulletin Board{% endblock %}
+
+<!-- Present posters as minis on the board -->
+{% block content %}
+
+<!-- Create container to evenly space minis -->
+<div class="container row justify-content-around mt-5">
+
+    <!-- Create minis containers -->
+    {% for poster in posters %}
+    <div class="col-xs-6 col-sm-4 col-md-2 m-1">
+
+        <!-- Create minis shape, and change minis colour based on poster priority -->
+        <div class="card index-card rounded-top-0 {% if poster.priority == 'Low' %}low-priority{% elif poster.priority == 'Medium' %}medium-priority{% elif poster.priority == 'High' %}high-priority{% endif %}">
+            <div class="card-body">
+
+                <!-- Poster mini title is clickable, links to view_poster page for poster.id -->
+                <h3 class="card-title"><a href="{% url 'view_poster' poster.id %}">{{ poster.title }}</a></h3>
+                <h5 class="card-text">
+                    {{poster.created_on }} by <b>{{ poster.author }}</b>
+                </h5>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

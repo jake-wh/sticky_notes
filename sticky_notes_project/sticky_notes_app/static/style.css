@@ -1,0 +1,188 @@
+body {
+    background-color: #ff6453;
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+h1, h3{
+    font-weight: 700;
+    color: royalblue;
+}
+
+p, h5 {
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: royalblue;
+}
+
+/* App Head */
+#app-name {
+    font-size: 60px;
+    color: black;
+}
+
+/* Lighter colour for title 'Sticky Notes' container */
+.outer {
+    background-color: #ffab78;
+    padding: 20px;
+    height: 95vh;
+    flex-direction: column;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Lighter colour for the 'board' */
+.inner {
+    background-color: bisque;
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.filter {
+    margin-left: 50px;
+}
+
+.filter:hover {
+    border-radius: 15px;
+    background-color: bisque;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: box-shadow, background 0.2s ease-in-out;
+}
+
+/* Sticky notes */
+.card {
+    background-color: ivory;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.index-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3),
+                0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.poster-head {
+    font-size: 80px;
+}
+
+.poster-body{
+    font-size: 200%;
+}
+
+.poster-date {
+    font-size: 120%;
+}
+
+/* Different colour h1 for delete title */
+#delete {
+    color: black;
+}
+
+/* Button and icon stylings */
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: black;
+    font-size: 30px;
+}
+
+.btn-icon:hover {
+    border-radius: 10px;
+    background-color: bisque;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: box-shadow, background 0.2s ease-in-out;
+}
+
+/* For buttons on delete pages */
+.row-buttons {
+    width: 100%;
+}
+
+.icon-submit {
+    text-align: right;
+    margin: 1rem;
+}
+
+/* Blends form fields to container */
+.form-control {
+    background-color: transparent;
+    border: none;
+    resize: none;
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+}
+
+.form-label {
+    font-size: 20px;
+}
+
+/* Priority buttons on PosterForm */
+.priority-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+.priority-selector {
+    margin-right: 8px;
+    display: inline-flex;
+}
+
+.priority-selector input[type="radio"] {
+    display: none;
+}
+
+.priority-selector label {
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: -20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Note colours based on priority */
+.low-priority {
+    background-color: ivory;
+}
+
+.medium-priority {
+    background-color: #fcfc7b;
+}
+
+.high-priority {
+    background-color: #ffd4d4;
+}
+
+/* Button stylings */
+.priority-selector input[type="radio"]#id_priority_0:hover + label {
+    background-color: ivory;
+}
+
+.priority-selector input[type="radio"]#id_priority_1:hover + label {
+    background-color: #fcfc7b;
+}
+
+.priority-selector input[type="radio"]#id_priority_2:hover + label {
+    background-color: #ffd4d4;
+}
+
+.priority-selector input[type="radio"]#id_priority_0:checked + label {
+    background-color: ivory;
+}
+
+.priority-selector input[type="radio"]#id_priority_1:checked + label {
+    background-color: #fcfc7b;
+}
+
+.priority-selector input[type="radio"]#id_priority_2:checked + label {
+    background-color: #ffd4d4;
+}

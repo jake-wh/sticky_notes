@@ -1,0 +1,39 @@
+<!-- templates/view_poster.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}View Poster{% endblock %}
+
+<!-- View poster content -->
+{% block content %}
+
+<!-- Create poster container -->
+<!-- Change poster colour based on poster priority -->
+<div class="container mt-3 mb-3 card {% if poster.priority == 'Low' %}low-priority{% elif poster.priority == 'Medium' %}medium-priority{% elif poster.priority == 'High' %}high-priority{% endif %}">
+
+    <!-- Poster title -->
+    <h1 class="poster-head">{{ poster.title }}</h1>
+
+    <!-- Poster body -->
+    <p class="poster-body">{{ poster.body }}</p>
+
+    <!-- Poster date and time created -->
+    <p class="poster-date"><b>Poster Made:</b> {{ poster.created_on }}</p>
+
+    <!-- Poster author -->
+    <p class="poster-body"><b>Author:</b> {{ poster.author }}</p>
+
+    <!-- Container for poster options -->
+    <div class="d-flex row-buttons col-sm-8 p-3 justify-content-around">
+
+        <!-- Delete poster -->
+        <a href="{% url 'delete_poster' poster.id %}" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash3-fill btn-icon" aria-label="Delete"></i></a>
+
+        <!-- Edit poster -->
+        <a href="{% url 'edit_poster' poster.id %}" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square btn-icon" aria-label="Edit"></i></a>
+
+        <!-- Back to index -->
+        <a href="{% url 'index' %}" data-bs-toggle="tooltip" data-bs-placement="top" title="Back"><i class="bi bi-back btn-icon" aria-label="Back"></i></a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+<!-- templates/delete_author.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Delete Author{% endblock %}
+
+<!-- Page to confirm author deletion -->
+{% block content %}
+
+<!-- Create poster container -->
+<!-- Change poster colour based on poster priority -->
+<di class="card mt-3 p-3 {% if poster.priority == 'Low' %}low-priority{% elif poster.priority == 'Medium' %}medium-priority{% elif poster.priority == 'High' %}high-priority{% endif %}">
+
+    <!-- Poster title -->
+    <h1 id="delete" class="poster-head">Delete Author</h1>
+
+    <!-- Display author name for deletion -->
+    <p class="poster-body">Are you sure you want to delete this Author? -> <span style="font-weight: 700; color: royalblue; font-size: 40px;">{{ author.name }}?</span></p>
+    <p style="font-size: 25px;"><span style="color: royalblue">All posters</span> that belong to them will also be deleted!</p>
+
+    <!-- Create form buttons -->
+    <form method="post" action="{% url 'delete_author' author.id %}">
+        {% csrf_token %}
+
+        <!-- Container for form buttons -->
+        <div class="d-flex col-sm-2 justify-content-around row-buttons">
+
+            <!-- Button: delete -->
+            <button type="submit" class="btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash3-fill" aria-label="Delete"></i></button>
+
+            <!-- Cancel, return to index page -->
+            <a href="{% url 'index' %}" data-bs-toggle="tooltip" data-bs-placement="top" title="Back"><i class="bi bi-back btn-icon"></i></a>
+        </div>
+    </form>
+</div>
+{% endblock %}

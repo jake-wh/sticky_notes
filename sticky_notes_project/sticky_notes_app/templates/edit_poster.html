@@ -1,0 +1,64 @@
+<!-- templates/edit_poster.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Edit Poster{% endblock %}
+
+<!-- Edit a poster -->
+{% block content %}
+
+<!-- Create parent containers for poster form -->
+<div class="container row justify-content-around mt-3">
+    <div class="col-md-6">
+
+        <!-- Create poster container -->
+        <div class="card rounded-top-0">
+
+            <!-- If statement to change poster colour based on priority -->
+            <div class="card-body {% if form.instance.priority == 'Low' %}low-priority{% elif form.instance.priority == 'Medium' %}medium-priority{% elif form.instance.priority == 'High' %}high-priority{% endif %}">
+
+                <!-- Page title -->
+                <h1 class="edit" style="color: black; font-size: 25px; text-align: center;">Edit</h1>
+
+                <!-- Create form -->
+                <form method="post">
+                    {% csrf_token %}
+
+                    <!-- Buttons to select note priority -->
+                    <div class="priority-buttons">
+                        {% for radio in form.priority %}
+                            <div class="priority-selector">
+                                {{ radio.tag }}
+                                <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Form title field -->
+                    <div class="mb-3">
+                        <p class="form-label">Title</p>
+                        <span>{{ form.title }}</span>
+                    </div>
+
+                    <!-- Form body field -->
+                    <div class="mb-3 form-label">
+                        <p class="form-label">Note</p>
+                        <span>{{ form.body }}</span>
+                    </div>
+
+                    <!-- Form author field -->
+                    <div class="mb-3">
+                        <p class="form-label">Author:</p>
+                        <span>{{ form.author_name }}</span>
+                    </div>
+
+                    <!-- Submit form button -->
+                    <div class="icon-submit d-flex justify-content-end">
+                        <button type="submit" class="button btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"><i class="bi bi-file-plus"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
